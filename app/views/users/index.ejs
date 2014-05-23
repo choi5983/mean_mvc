@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.js'></script>
+	</head>
+
+	<body>
+
+		<div ng-app="myApp">
+			<h1>Hello World</h1>
+			<p>This is my users index view file</p>
+			
+			<div ng-controller="DojoController">
+				<h3>List of all the users</h3>
+				<input type="text" placeholder="search" ng-model="filter_name">
+				<ul>
+					<li ng-repeat="friend in friends | filter:filter_name">{{friend.name}} - {{friend.email}}</li>
+				</ul>
+
+				<h3>Add a new user</h3>
+				<form>
+					<input type="text" name="name" placeholder="name" ng-model="new_user.name" />
+					<input type="text" name="email" placeholder="email" ng-model="new_user.email" />
+					<input type="submit" value="Create a new user" ng-click="addUser()" />
+				</form>
+			</div>
+		</div>
+
+	<script type="text/javascript">
+
+	</script>
+
+	</body>
+</html>
