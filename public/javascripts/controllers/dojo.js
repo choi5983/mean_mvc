@@ -1,7 +1,11 @@
 myApp.controller('DojoController', function($scope, FriendsFactory){
-	$scope.friends = FriendsFactory.getFriends();
-	$scope.friends = FriendsFactory.updateFriends();
+	FriendsFactory.getFriends(function(friends){
+		$scope.friends = friends;
+	});
+
 	$scope.addUser = function(){
-		FriendsFactory.addUser($scope.new_user);
+		FriendsFactory.addUser($scope.new_user, function(err){
+			$scope.errors = err;
+		});
 	}
 });

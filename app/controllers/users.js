@@ -11,21 +11,21 @@ module.exports = {
 			res.send(JSON.stringify(results));
 		});
 	},
+	create: function(req, res){
+		var a = new User(req.body);
+		a.save(function(err){
+			if(err){
+				res.send(JSON.stringify(err));
+			}
+			else
+			{
+				res.send('success');
+			}
+		});
+	},
 
 	show: function(req, res){
 		res.render('./../app/views/users/show', {title:'Welcome Page'});
-	},
-
-	new: function(req, res){
-		var user1 = new User();
-		user1.name = 'Speros';
-		user1.email = 'speros@codingdojo.com';
-		user1.height = 'short';
-		user1.save();
-		
-		console.log('USER 1 INFO', user1);
-
-		res.render('./../app/views/users/new', {title:'Welcome Page'});
 	},
 
 	edit: function(req, res){
