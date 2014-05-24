@@ -3,7 +3,7 @@ myApp.factory('FriendsFactory', function($http){
 
 	var factory = {};
 	
-	factory.addUser = function(user, err_callback){
+	factory.addUser = function(user, update_errors){
 		
 		$http.post('/users/create', user).success(function(data, status, headers, config) {
 		  console.log('data is', data);
@@ -14,10 +14,11 @@ myApp.factory('FriendsFactory', function($http){
 				email: user.email
 			});
 	      	friends = data;
+	      	update_errors(false);
 	      }
 	      else
 	      {
-	      	err_callback(data.errors);
+	      	update_errors(data.errors);
 	      }
 		});
 	}
